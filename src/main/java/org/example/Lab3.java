@@ -5,21 +5,21 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class TextHandler {
-    public int getResult() {
+public class Lab3 {
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         while(true) {
             try {
                 System.out.println("Enter text:");
                 StringBuffer buffer = new StringBuffer(scanner.nextLine());
-                System.out.println(buffer+"\n");
                 if (buffer.length() == 0 || !buffer.toString().contains("."))
                     throw new Exception();
 
                 String[] sentences = buffer.toString().split("[.!?]+\\s*");
                 scanner.close();
-                return Calculate(sentences);
+                System.out.println("\nResult: " + Calculate(sentences) + "\n");
+                break;
             } catch (Exception e) {
                 System.err.println("Error: Input Mismatch.\n");
                 scanner.nextLine();
@@ -27,7 +27,7 @@ public class TextHandler {
         }
     }
 
-    private int Calculate(String[] sentences) {
+    private static int Calculate(String[] sentences) {
         HashMap<String, Integer> wordCount = new HashMap<>();
         for (String sentence : sentences) {
             String[] sentenceWords = sentence.split("\\s+");
@@ -46,7 +46,7 @@ public class TextHandler {
         return Collections.max(wordCount.values());
     }
 
-    private boolean isFound(ArrayList<String> allWords, String word) {
+    private static boolean isFound(ArrayList<String> allWords, String word) {
         for (String element : allWords)
             if (element.equals(word))
                 return true;
