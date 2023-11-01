@@ -36,13 +36,11 @@ public class Lab3 {
         for (StringBuffer sentence : sentences) {
             ArrayList<StringBuffer> words = getWords(sentence);
             ArrayList <StringBuffer> allWords = new ArrayList<StringBuffer>();
-            for (StringBuffer word : words) {
-                isFound(allWords, word);
+            for (StringBuffer word : words)
                 if (!isFound(allWords, word)) {
                     allWords.add(word);
                     wordCount.addRecord(word);
                 }
-            }
         }
         return wordCount.getMax();
     }
