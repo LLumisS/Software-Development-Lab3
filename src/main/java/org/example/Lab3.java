@@ -18,7 +18,7 @@ public class Lab3 {
                 if (containsCyrillic(text))
                     throw new Exception();
 
-                if (text.length() == 0 || !text.toString().contains("."))
+                if (text.length() == 0)
                     throw new Exception();
 
                 System.out.println("\nResult: " + Calculate(text) + "\n");
