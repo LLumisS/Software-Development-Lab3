@@ -38,7 +38,7 @@ public class Lab3 {
     private static int Calculate(String[] sentences) {
         HashMap<String, Integer> wordCount = new HashMap<>();
         for (String sentence : sentences) {
-            String[] sentenceWords = sentence.split("\\P{L}+");
+            String[] sentenceWords = sentence.split("[^\\p{L}]+");
             ArrayList <String> allWords = new ArrayList<String>();
             for (String word : sentenceWords) {
                 word = word.toLowerCase();
