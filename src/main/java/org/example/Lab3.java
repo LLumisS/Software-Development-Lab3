@@ -101,8 +101,8 @@ public class Lab3 {
     }
 
     private static boolean isForbidden(char ch) {
-        char[] forbiddens = {'.', '!', '?', ' ', ',', ';', ':', '(', ')', 
-            '"', '\'', '@'};
+        char[] forbiddens = {'.', '!', '?', ' ', ',',
+            ';', ':', '(', ')', '"', '\'', '@'};
 
         for (char forbidden : forbiddens)
             if (ch == forbidden)
