@@ -69,44 +69,18 @@ public class Lab3 {
     }
 
     private static ArrayList<StringBuffer> getWords(StringBuffer sentence) {
+        Pattern WORD_PATTERN = Pattern.compile("\\b\\w+\\b");
         ArrayList<StringBuffer> words = new ArrayList<>();
-        ArrayList<Integer> separators = new ArrayList<>();
+        Matcher matcher = WORD_PATTERN.matcher(sentence);
 
-        separators.add(0);
-        for (int i = 0; i < sentence.length() - 1; i++) {
-            char ch = sentence.charAt(i);
-            if (ch == ' ' || ch == '-' || ch == '@')
-                separators.add(i + 1);
-        }
-        separators.add(sentence.length());
-
-        for (int i = 0; i < separators.size() - 1; i++) {
-            int pos1 = separators.get(i);
-            int pos2 = Math.min(separators.get(i + 1), sentence.length());
-            StringBuffer word = new StringBuffer(sentence.substring(pos1, pos2));
-
-            for (int j = word.length() - 1; j >= 0; j--) {
-                char ch = word.charAt(j);
-                if (isForbidden(ch)) 
-                    word.deleteCharAt(j);
-            }
-
+        while (matcher.find()) {
+            StringBuffer word = new StringBuffer(matcher.group());
             toLowerCase(word);
             words.add(word);
+            System.out.println(word);
         }
 
         return words;
-    }
-
-    private static boolean isForbidden(char ch) {
-        char[] forbiddens = {'.', '!', '?', ' ', ',',
-            ';', ':', '(', ')', '"', '\'', '@', '`'};
-
-        for (char forbidden : forbiddens)
-            if (ch == forbidden)
-                return true;
-
-        return false;
     }
 
     public static void toLowerCase(StringBuffer stringBuffer) {
