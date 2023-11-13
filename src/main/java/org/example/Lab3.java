@@ -15,9 +15,6 @@ public class Lab3 {
                 System.out.println("Enter text:");
                 StringBuffer text = new StringBuffer(scanner.nextLine());
 
-                if (containsCyrillic(text))
-                    throw new Exception();
-
                 if (text.length() == 0)
                     throw new Exception();
 
@@ -77,7 +74,6 @@ public class Lab3 {
             StringBuffer word = new StringBuffer(matcher.group());
             toLowerCase(word);
             words.add(word);
-            System.out.println(word);
         }
 
         return words;
@@ -109,11 +105,5 @@ public class Lab3 {
                 return false;
         
         return true;
-    }
-
-    private static boolean containsCyrillic(StringBuffer input) {
-        Pattern pattern = Pattern.compile("[а-яА-Я]");
-        Matcher matcher = pattern.matcher(input);
-        return matcher.find();
     }
 }
