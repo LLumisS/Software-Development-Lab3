@@ -18,7 +18,11 @@ public class Lab3 {
                 if (text.length() == 0)
                     throw new Exception();
 
-                System.out.println("\nResult: " + Calculate(text) + "\n");
+                int result = Calculate(text);
+                if (result == 0)
+                    throw new Exception();
+
+                System.out.println("\nResult: " + result + "\n");
                 scanner.close();
                 break;
             } catch (Exception e) {

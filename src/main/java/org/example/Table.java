@@ -6,7 +6,7 @@ public class Table {
     private ArrayList<Record> table = new ArrayList<>();
 
     public int getMax() {
-        int max = 1;
+        int max = 0;
         for (Record record : table)
             if (record.getValue() > max)
                 max = record.getValue();
